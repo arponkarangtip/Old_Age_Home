@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    * {
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #181818, #202020);
+        color: white;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-shadow: 0 0 12px #00fff2;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Key Metrics Cards */
+    .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+        padding: 25px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    .card h2 {
+        font-size: 28px;
+        color: #00fff2;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 16px;
+        color: #fff;
+    }
+
+    /* Charts Section */
+    .charts {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .chart-container {
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+    }
+
+    .chart-container h3 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #00fff2;
+    }
+
+    @media (max-width: 900px) {
+        .metrics, .charts {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <h1>Analytics Dashboard</h1>
+
+    <div class="container">
+        <!-- Key Metrics -->
+        <div class="metrics">
+            <div class="card">
+                <h2>120</h2>
+                <p>Active Users</p>
+            </div>
+            <div class="card">
+                <h2>25</h2>
+                <p>Staff Members</p>
+            </div>
+            <div class="card">
+                <h2>45</h2>
+                <p>Reports Generated</p>
+            </div>
+            <div class="card">
+                <h2>87%</h2>
+                <p>AI Insights Accuracy</p>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts">
+            <div class="chart-container">
+                <h3>Users Activity (Monthly)</h3>
+                <canvas id="lineChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Report Types Distribution</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Staff Attendance (%)</h3>
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>AI Insights Trends</h3>
+                <canvas id="areaChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js Scripts -->
+    <script>
+        // Line Chart
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                datasets: [{
+                    label: 'User Activity',
+                    data: [30, 45, 60, 50, 70, 80, 90, 85, 60, 75, 90, 100],
+                    borderColor: '#00fff2',
+                    backgroundColor: 'rgba(0,255,242,0.2)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { labels: { color: 'white' } } },
+                scales: {
+                    x: { ticks: { color: 'white' } },
+                    y: { ticks: { color: 'white' } }
+                }
+            }
+        });
+
+        // Pie Chart
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Health','Activities','Appointments','Reports'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#00fff2','#007bff','#ff007f','#ffbf00']
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { labels: { color: 'white' } } } }
+        });
+
+        // Bar Chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+                datasets: [{
+                    label: 'Attendance %',
+                    data: [90, 85, 95, 80, 88, 92],
+                    backgroundColor: '#00fff2'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { labels: { color: 'white' } } },
+                scales: {
+                    x: { ticks: { color: 'white' } },
+                    y: { ticks: { color: 'white', beginAtZero: true } }
+                }
+            }
+        });
+
+        // Area Chart (using line chart with fill)
+        const areaCtx = document.getElementById('areaChart').getContext('2d');
+        new Chart(areaCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1','Week 2','Week 3','Week 4'],
+                datasets: [{
+                    label: 'AI Insights Trend',
+                    data: [70,75,80,85],
+                    borderColor: '#ffbf00',
+                    backgroundColor: 'rgba(255,191,0,0.3)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { labels: { color: 'white' } } },
+                scales: {
+                    x: { ticks: { color: 'white' } },
+                    y: { ticks: { color: 'white', beginAtZero: true } }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
