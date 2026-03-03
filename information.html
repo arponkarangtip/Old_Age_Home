@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organization Information</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    /* --- RESET & BASIC SETUP --- */
+    * {
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #181818, #202020);
+        color: white;
+        display: flex; /* ENABLE FLEX LAYOUT FOR SIDEBAR */
+        min-height: 100vh;
+    }
+
+    /* --- SIDEBAR STYLES --- */
+    .sidebar {
+        width: 260px;
+        background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+        border-right: 1px solid rgba(0, 255, 242, 0.2);
+        padding: 20px;
+        position: fixed; /* Fix sidebar in place */
+        height: 100%;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        z-index: 100;
+    }
+
+    .sidebar h2 {
+        color: #00fff2;
+        margin-bottom: 40px;
+        font-size: 24px;
+        text-align: center;
+        text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        transition: 0.3s;
+        display: block;
+        font-size: 16px;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+        background: rgba(0, 255, 242, 0.15);
+        color: #00fff2;
+        box-shadow: 0 0 10px rgba(0, 255, 242, 0.2);
+    }
+
+    /* --- MAIN CONTENT AREA --- */
+    .main-content {
+        margin-left: 260px; /* Push content to the right of sidebar */
+        width: calc(100% - 260px);
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 38px;
+        margin-bottom: 40px;
+        text-shadow: 0 0 15px #00fff2;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* --- GLASS CARDS (Your Original Styles) --- */
+    .card {
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+        padding: 25px;
+        margin-bottom: 25px;
+        border-radius: 18px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.25);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 25px rgba(0,255,255,0.55);
+    }
+
+    .card h2 {
+        font-size: 26px;
+        margin-bottom: 12px;
+        color: #00fff2;
+    }
+
+    .card ul {
+        margin-left: 20px;
+    }
+    
+    .card li {
+        margin-bottom: 8px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .team {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .team-member {
+        background: rgba(255,255,255,0.07);
+        padding: 20px;
+        border-radius: 14px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+    }
+
+    .team-member:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0,255,255,0.5);
+    }
+
+    .team-member h3 {
+        margin: 8px 0;
+        font-size: 18px;
+        color: #fff;
+    }
+    
+    .team-member p {
+        color: #ccc;
+        font-size: 14px;
+    }
+
+    .contact-box p {
+        margin: 6px 0;
+        font-size: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .info-grid { grid-template-columns: 1fr; }
+        .team { grid-template-columns: 1fr; }
+        .sidebar { display: none; } /* Hide sidebar on mobile for now */
+        .main-content { margin-left: 0; width: 100%; }
+    }
+
+</style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>Information</h2>
+       <a href="home.html">🏠 Home</a>
+       <a href="review.php">👤 Users Review</a>
+      <a href="information.html">📁 Information</a>
+     <a href="index1.html">📁 AI ChatBot</a>
+
+    </div>
+
+    <div class="main-content">
+
+        <h1>Organization Information</h1>
+
+        <div class="container">
+
+            <div class="card">
+                <h2>🏛 About Our Organization</h2>
+                <p>
+                    Our Old Age Home Management System is dedicated to providing a safe, healthy, and caring environment 
+                    for elderly residents. We focus on ensuring their comfort, dignity, and well-being through modern 
+                    technology, trained staff, and personalized services.
+                </p>
+            </div>
+
+            <div class="info-grid">
+                <div class="card">
+                    <h2>🎯 Mission</h2>
+                    <p>
+                        To deliver compassionate, high-quality care to senior citizens by integrating advanced 
+                        management tools, AI-driven monitoring, and a supportive community culture.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>👁 Vision</h2>
+                    <p>
+                        To become a model old age care organization that uses innovation and technology to enhance 
+                        the lives of elders and support their independence and emotional well-being.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🛠 Services We Provide</h2>
+                <ul>
+                    <li>24/7 Medical & Health Support</li>
+                    <li>Staff Management & Duty Scheduling</li>
+                    <li>Resident Activity & Wellness Tracking</li>
+                    <li>AI-powered Safety Monitoring</li>
+                    <li>Nutrition & Meal Management</li>
+                    <li>Family/Guardian Communication Portal</li>
+                    <li>Appointment & Daily Task Management</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>👥 Management Team</h2>
+                <div class="team">
+                     <div class="team-member">
+                        <h3>Arpon Kar Angtip</h3>
+                        <p>Director & Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <h3>Akash Kumer Podder </h3>
+                        <p>Director & Co-Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <h3>Taposh Sarker Adi</h3>
+                        <p>Senior Care Supervisor</p>
+                    </div>
+                    <div class="team-member">
+                        <h3>Arin Mia</h3>
+                        <p>Operations Manager</p>
+                    </div>
+                     <div class="team-member">
+                        <h3>Shihab Hasan Molla</h3>
+                        <p>Operations Manager</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card contact-box">
+                <h2>📞 Contact Information</h2>
+                <p><strong>Address:</strong> United International University, Dhaka, Bangladesh</p>
+                <p><strong>Email:</strong> oahms@gmail.com</p>
+                <p><strong>Phone 1:</strong> 01781414123</p>
+                <p><strong>Phone 2:</strong> 01310805474</p>
+            </div>
+
+        </div> </div> </body>
+</html>
